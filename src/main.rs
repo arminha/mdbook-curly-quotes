@@ -3,6 +3,7 @@ mod preprocessor;
 use crate::preprocessor::CurlyQuotes;
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
+use semver::{Version, VersionReq};
 use std::io;
 use std::process;
 use structopt::StructOpt;
@@ -35,9 +36,9 @@ fn main() {
 fn handle_preprocessing(pre: &dyn Preprocessor) -> Result<(), Error> {
     let (ctx, book) = CmdPreprocessor::parse_input(io::stdin())?;
 
-    if ctx.mdbook_version != mdbook::MDBOOK_VERSION {
-        // We should probably use the `semver` crate to check compatibility
-        // here...
+    let version = Version::parse(&ctx.mdbook_version).unwrap();
+    let version_req = VersionReq::parse(mdbook::MDBOOK_VERSION).unwrap();
+    if !version_req.matches(&version) {
         eprintln!(
             "Warning: The {} plugin was built against version {} of mdbook, \
              but we're being called from version {}",
