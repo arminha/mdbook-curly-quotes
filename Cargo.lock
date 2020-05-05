@@ -724,6 +724,8 @@ name = "mdbook-curly"
 version = "0.1.0"
 dependencies = [
  "mdbook",
+ "pulldown-cmark",
+ "pulldown-cmark-to-cmark",
  "semver",
  "serde_json",
  "structopt",
@@ -1101,6 +1103,15 @@ dependencies = [
  "getopts",
  "memchr",
  "unicase 2.6.0",
+]
+
+[[package]]
+name = "pulldown-cmark-to-cmark"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf89659b1da0800e093162bc6f9305d896393af721cc88ffdb86a4b20760fe89"
+dependencies = [
+ "pulldown-cmark",
 ]
 
 [[package]]
