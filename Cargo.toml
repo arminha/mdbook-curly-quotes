@@ -5,6 +5,11 @@ authors = ["Armin Häberling <armin.aha@gmail.com>"]
 edition = "2018"
 license = "MPL-2.0"
 
+[profile.release]
+lto = true
+opt-level = "z"
+codegen-units = 1
+
 [dependencies]
 mdbook = { version = "0.3.7", default-features = false }
 pulldown-cmark = "0.6.1"
