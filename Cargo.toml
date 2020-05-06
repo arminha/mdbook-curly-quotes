@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-curly"
-version = "0.1.0"
+version = "0.3.0"
 authors = ["Armin Häberling <armin.aha@gmail.com>"]
 edition = "2018"
 license = "MPL-2.0"
