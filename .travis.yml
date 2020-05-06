@@ -1,15 +1,14 @@
 language: rust
+dist: bionic
 
 rust:
   - 1.40.0
   - stable
   - beta
   - nightly
-matrix:
+jobs:
   allow_failures:
     - rust: nightly
-
-sudo: false
 
 cache: cargo
 
