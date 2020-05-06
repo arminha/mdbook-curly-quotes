@@ -1,0 +1,19 @@
+language: rust
+
+rust:
+  - 1.40.0
+  - stable
+  - beta
+  - nightly
+matrix:
+  allow_failures:
+    - rust: nightly
+
+sudo: false
+
+cache: cargo
+
+script:
+  - if [ $TRAVIS_RUST_VERSION = "stable" ]; then cargo fmt --all -- --check; fi
+  - cargo build --verbose
+  - cargo test --verbose
