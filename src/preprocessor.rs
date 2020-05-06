@@ -10,19 +10,21 @@ impl CurlyQuotes {
         CurlyQuotes
     }
 
-    fn process_item(&self, item: &mut BookItem) {
+    fn process_item(&self, item: &mut BookItem) -> Result<(), Error> {
         if let BookItem::Chapter(ref mut ch) = item {
-            ch.content = self.process_content(&ch.content);
+            ch.content = self.process_content(&ch.content)?;
         }
+        Ok(())
     }
 
-    fn process_content(&self, content: &str) -> String {
+    fn process_content(&self, content: &str) -> Result<String, Error> {
         let parser = mdbook::utils::new_cmark_parser(content);
         let mut converter = EventQuoteConverter::new();
         let events = parser.map(|event| converter.convert(event));
         let mut buffer = String::new();
-        pulldown_cmark_to_cmark::fmt::cmark(events, &mut buffer, None).unwrap();
-        buffer
+        pulldown_cmark_to_cmark::fmt::cmark(events, &mut buffer, None)
+            .map_err(|err| Error::from(format!("Markdown serialization failed: {}", err)))?;
+        Ok(buffer)
     }
 }
 
@@ -32,8 +34,19 @@ impl Preprocessor for CurlyQuotes {
     }
 
     fn run(&self, _ctx: &PreprocessorContext, mut book: Book) -> Result<Book, Error> {
-        book.for_each_mut(|item| self.process_item(item));
-        Ok(book)
+        let mut err = None;
+        book.for_each_mut(|item| {
+            self.process_item(item).unwrap_or_else(|e| {
+                if err.is_none() {
+                    err = Some(e);
+                }
+            })
+        });
+        if let Some(err) = err {
+            Err(err)
+        } else {
+            Ok(book)
+        }
     }
 }
 
@@ -92,7 +105,9 @@ mod test {
     #[test]
     fn process_content() {
         let preprocessor = CurlyQuotes::new();
-        let new_content = preprocessor.process_content("[\"example\"](https://www.rust-lang.org/\")");
+        let new_content = preprocessor
+            .process_content("[\"example\"](https://www.rust-lang.org/\")")
+            .unwrap();
         assert_eq!(new_content, "[“example”](https://www.rust-lang.org/\")")
     }
 }
