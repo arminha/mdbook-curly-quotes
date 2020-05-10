@@ -1,7 +1,7 @@
-mdbook-curly
-============
+mdbook-curly-quotes
+===================
 
-[![Build Status](https://travis-ci.org/arminha/mdbook-curly.svg?branch=master)](https://travis-ci.org/arminha/mdbook-curly)
+[![Build Status](https://travis-ci.org/arminha/mdbook-curly-quotes.svg?branch=master)](https://travis-ci.org/arminha/mdbook-curly-quotes)
 
 [mdBook](https://github.com/rust-lang/mdBook) preprocessor that replaces straight quotes with curly quotes, except within code blocks or code spans.
 

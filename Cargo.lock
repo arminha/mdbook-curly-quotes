@@ -392,7 +392,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "mdbook-curly"
+name = "mdbook-curly-quotes"
 version = "0.3.0"
 dependencies = [
  "mdbook",
