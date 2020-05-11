@@ -8,7 +8,7 @@ use std::io;
 use std::process;
 use structopt::StructOpt;
 
-/// A mdbook preprocessor which replaces normal quotes with curly quotes
+/// mdBook preprocessor which replaces straight quotes with curly quotes
 #[derive(StructOpt)]
 struct Opt {
     #[structopt(subcommand)]
