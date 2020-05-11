@@ -3,7 +3,11 @@ name = "mdbook-curly-quotes"
 version = "0.3.0"
 authors = ["Armin Häberling <armin.aha@gmail.com>"]
 edition = "2018"
+keywords = ["mdbook", "markdown"]
 license = "MPL-2.0"
+readme = "README.md"
+description = """mdBook preprocessor that replaces straight quotes with curly\
+quotes, except within code blocks or code spans."""
 
 [profile.release]
 lto = true
