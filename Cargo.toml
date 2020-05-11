@@ -8,6 +8,10 @@ license = "MPL-2.0"
 readme = "README.md"
 description = """mdBook preprocessor that replaces straight quotes with curly\
 quotes, except within code blocks or code spans."""
+repository = "https://github.com/arminha/mdbook-curly-quotes"
+
+[badges]
+travis-ci = { repository = "arminha/mdbook-curly-quotes", branch = "master" }
 
 [profile.release]
 lto = true
