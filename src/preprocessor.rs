@@ -22,8 +22,8 @@ impl CurlyQuotes {
         let mut converter = EventQuoteConverter::new();
         let events = parser.map(|event| converter.convert(event));
         let mut buffer = String::new();
-        pulldown_cmark_to_cmark::fmt::cmark(events, &mut buffer, None)
-            .map_err(|err| Error::from(format!("Markdown serialization failed: {}", err)))?;
+        pulldown_cmark_to_cmark::cmark(events, &mut buffer, None)
+            .map_err(|err| Error::new(err).context("Markdown serialization failed"))?;
         Ok(buffer)
     }
 }
