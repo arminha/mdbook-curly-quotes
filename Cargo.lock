@@ -270,7 +270,7 @@ dependencies = [
 
 [[package]]
 name = "mdbook-curly-quotes"
-version = "0.4.1"
+version = "0.4.2"
 dependencies = [
  "mdbook",
  "pulldown-cmark",
