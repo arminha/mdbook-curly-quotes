@@ -1,6 +1,7 @@
 # mdbook-curly-quotes
 
 [![Build Status](https://travis-ci.org/arminha/mdbook-curly-quotes.svg?branch=master)](https://travis-ci.org/arminha/mdbook-curly-quotes)
+[![build](https://github.com/arminha/mdbook-curly-quotes/workflows/build/badge.svg)](https://github.com/arminha/mdbook-curly-quotes/actions?query=workflow%3Abuild)
 [![dependency status](https://deps.rs/repo/github/arminha/mdbook-curly-quotes/status.svg)](https://deps.rs/repo/github/arminha/mdbook-curly-quotes)
 [![Crates.io](https://img.shields.io/crates/v/mdbook-curly-quotes)](https://crates.io/crates/mdbook-curly-quotes)
 
