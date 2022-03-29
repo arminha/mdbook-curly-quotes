@@ -18,10 +18,10 @@ impl CurlyQuotes {
     }
 
     fn process_content(content: &str) -> Result<String, Error> {
-        let parser = mdbook::utils::new_cmark_parser(content);
+        let parser = mdbook::utils::new_cmark_parser(content, false);
         let events = parser.map(CurlyQuotes::convert_event);
         let mut buffer = String::new();
-        pulldown_cmark_to_cmark::cmark(events, &mut buffer, None)
+        pulldown_cmark_to_cmark::cmark(events, &mut buffer)
             .map_err(|err| Error::new(err).context("Markdown serialization failed"))?;
         Ok(buffer)
     }
