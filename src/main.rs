@@ -1,31 +1,31 @@
 mod preprocessor;
 
 use crate::preprocessor::CurlyQuotes;
+use clap::Parser;
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};
 use std::io;
 use std::process;
-use structopt::StructOpt;
 
 /// mdBook preprocessor which replaces straight quotes with curly quotes
-#[derive(StructOpt)]
-struct Opt {
-    #[structopt(subcommand)]
+#[derive(Parser)]
+struct Args {
+    #[clap(subcommand)]
     command: Option<Command>,
 }
 
-#[derive(StructOpt)]
+#[derive(Parser)]
 enum Command {
     /// Check whether a renderer is supported by this preprocessor
     Supports { renderer: String },
 }
 
 fn main() {
-    let opts = Opt::from_args();
+    let args = Args::parse();
     let preprocessor = CurlyQuotes::new();
 
-    if let Some(Command::Supports { renderer }) = opts.command {
+    if let Some(Command::Supports { renderer }) = args.command {
         handle_supports(&preprocessor, &renderer);
     } else if let Err(e) = handle_preprocessing(&preprocessor) {
         eprintln!("{}", e);
