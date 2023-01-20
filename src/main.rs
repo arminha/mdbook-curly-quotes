@@ -28,7 +28,7 @@ fn main() {
     if let Some(Command::Supports { renderer }) = args.command {
         handle_supports(&preprocessor, &renderer);
     } else if let Err(e) = handle_preprocessing(&preprocessor) {
-        eprintln!("{}", e);
+        eprintln!("{e}");
         process::exit(1);
     }
 }
