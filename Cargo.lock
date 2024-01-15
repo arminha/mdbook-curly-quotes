@@ -566,9 +566,9 @@ dependencies = [
 
 [[package]]
 name = "pulldown-cmark-to-cmark"
-version = "10.0.4"
+version = "11.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0194e6e1966c23cc5fd988714f85b18d548d773e81965413555d96569931833d"
+checksum = "a883e495f8fc4f209521b03a89dde6f6f211ed7cf92e85693c82508e8b722710"
 dependencies = [
  "pulldown-cmark",
 ]
