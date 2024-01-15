@@ -17,7 +17,7 @@ codegen-units = 1
 
 [dependencies]
 clap = { version = "4.4.16", features = ["derive"] }
-mdbook = { version = "0.4.31", default-features = false }
+mdbook = { version = "0.4.36", default-features = false }
 pulldown-cmark = "0.9.3"
 pulldown-cmark-to-cmark = "11.0.2"
 semver = "1.0.18"
