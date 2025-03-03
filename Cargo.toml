@@ -16,7 +16,7 @@ opt-level = "z"
 codegen-units = 1
 
 [dependencies]
-clap = { version = "4.5.29", features = ["derive"] }
+clap = { version = "4.5.31", features = ["derive"] }
 mdbook = { version = "0.4.44", default-features = false }
 pulldown-cmark = "0.10.3"
 pulldown-cmark-to-cmark = "13.0.0"
