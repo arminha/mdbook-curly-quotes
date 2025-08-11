@@ -9,6 +9,7 @@ readme = "README.md"
 description = """mdBook preprocessor that replaces straight quotes with curly\
 quotes, except within code blocks or code spans."""
 repository = "https://github.com/arminha/mdbook-curly-quotes"
+rust-version = "1.82"
 
 [profile.release]
 lto = true
